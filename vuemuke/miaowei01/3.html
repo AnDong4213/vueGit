@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+		<style type="text/css">
+			#miaov{font-style: italic;}
+			.bg{background: hotpink;}
+		</style>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script>
+			var vm = new Vue({
+				el : '#demo',
+				render:(h1)=>h1(
+						"ul",
+						{
+							class : {
+								bg : true
+							},
+							style : {
+								fontSize : '30px'
+							},
+							attrs : {
+								id : 'miaov',
+								abc : 'haha'
+							},
+							props: {
+							    myProp: 'bar'
+							 },
+							domProps : {
+								//innerHTML : '<li>我是HTML</li>'
+							}
+						},
+						[
+						  h1('li',1),
+						  h1('li',2),
+						  h1('li',3),
+						]
+					)
+			})
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

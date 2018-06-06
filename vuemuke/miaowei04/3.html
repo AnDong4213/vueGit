@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h3>父组件中使用了count</h3>
+			<p>{{count}}</p>
+			<custom-component :countha="count" @incrementclick="countHandle"></custom-component>
+		</div>
+		<script>
+			Vue.component('custom-component',{
+				//props : ['countha'],
+				props : {
+					countha : {
+						//type : Number,
+						//type : [Number,String],
+						//default : 10,
+						//required : true
+						validator : function(val){
+							//console.log(val)
+							return val>9;
+						}
+					}
+				},
+				data(){
+					return {
+						incrementCount : this.countha
+					}
+				},
+				computed : {
+					incrementCount2(){
+						return this.incrementCount
+					}
+				},
+				template : `<div><h2>我是一个自定义的组件</h2>
+				        <p><i>{{incrementCount}}</i></p>
+						<em>{{incrementCount2}}</em>
+				        <input type="button" value="改变count的值" @click="changeCount" />
+				</div>`,
+				methods : {
+					changeCount(){
+						this.incrementCount++;
+						this.$emit('incrementclick');
+					}
+				}
+			});
+			new Vue({
+				el : '#app',
+				data : {
+					count : 18
+				},
+				methods : {
+					countHandle(){
+						this.count++;
+					}
+				}
+			})
+			
+		</script>
+	    
+	    
+		
+		<script src="app.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

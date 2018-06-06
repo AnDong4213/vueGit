@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./fontFace.css">
+		<link rel="stylesheet" type="text/css" href="./alert.css"/>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<m-alert type="error" :closeable="false" title="错误啦，请重新填写..."></m-alert>
+			<m-alert type="success" title="恭喜你，对喽..." @close-click="hehe"></m-alert>
+			<m-alert type="info" :closeable="false" :showicon="true"></m-alert>
+			<m-alert type="warning" style="background-color: pink;width: 600px;"></m-alert>
+			
+			<m-alert type="warning">
+				<template slot="titleTep">
+					<p>我是定制的提醒信息</p>
+					<p>我是定制的提醒信息</p>
+					<p>我是定制的提醒信息</p>
+					<p>我是定制的提醒信息</p>
+					<p>我是定制的提醒信息</p>
+					<p>我是定制的提醒信息</p>
+				</template>
+				<i slot="icontemp" class="m-icon m-icon-message"></i>
+			</m-alert>
+		</div>
+		<script>
+			Vue.component('m-alert',{
+				props : {
+					type : {
+						type : String,
+						default : 'info'
+					},
+					title : {
+						type : String,
+						default : '这里有一个消息要提示'
+					},
+					closeable : {
+						type : Boolean,
+						default : true
+					},
+					showicon : {
+						type : Boolean,
+						default : false
+					},
+					style : String
+				},
+				computed : {
+					classes(){
+						return `m-alert-${this.type}`
+					},
+					iconClass(){
+						return `m-icon-${this.type}`
+					}
+				},
+				template : `
+					<div class="m-alert" :class="[classes]" style="style">
+					    <slot name="icontemp">
+						    <i v-if="showicon" class="m-icon" :class="[iconClass]"></i>
+					    </slot>
+						<div class="m-content">
+							<em>{{classes}}</em>
+							<slot name="titleTep">
+								<span class="m-message">{{title}}</span>
+							</slot>
+							<i v-if="closeable" class="m-closebtn m-icon-close" @click="closeHandle"></i>
+						</div>
+					</div>`,
+				methods : {
+					closeHandle(){
+						this.$emit('close-click');
+					}
+				}
+			});
+			var vm = new Vue({
+				el : '#app',
+				methods : {
+					hehe(){
+						alert('触发事件...')
+					}
+				}
+			});
+		</script>
+	    
+	    
+		
+		<script src="app.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

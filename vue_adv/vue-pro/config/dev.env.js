@@ -1,0 +1,6 @@
+var merge = require('webpack-merge') // 合并对象...
+var prodEnv = require('./prod.env') // 一个对象...
+
+module.exports = merge(prodEnv, {
+  NODE_ENV: '"development"'
+})

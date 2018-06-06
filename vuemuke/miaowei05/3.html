@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="3.css"/>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<m-modal modal-title="提醒" @on-ok="ok"></m-modal>
+			<m-modal>
+				<ul slot="modal-content">
+					<li v-for="item of list">{{item}}</li>
+				</ul>
+				<div slot="modal-footer">
+					<span>确定</span>
+					<span>重置</span>
+					<span>返回</span>
+				</div>
+			</m-modal>
+			<m-modal @on-cancel="cancel"></m-modal>
+		</div>
+		<script>
+			Vue.component('m-modal',{
+				props : {
+					modalTitle : {
+						type : String,
+						default : '这是一个模态框...'
+					}
+				},
+				template : `
+					<div class="modal">
+						<div class="modal-header">
+							<h4>{{modalTitle}}</h4>
+						</div>
+						<div class="modal-content">
+							<div>
+								<slot name="modal-content">在这里添加内容u</slot>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<slot name="modal-footer">
+								<input type="button" class="btn blue" value="确定i" @click="okHandle" />
+							    <input type="button" class="btn" value="取消i" @click="cancelHandle" />
+							</slot>
+						</div>
+					</div>`,
+				methods : {
+					okHandle(){
+						this.$emit('on-ok');
+					},
+					cancelHandle(){
+						this.$emit('on-cancel')
+					}
+				}
+			});
+			var list = [...'我爱你中国'];
+			var vm = new Vue({
+				el : '#app',
+				data : {
+					list : list
+				},
+				methods : {
+					ok(){
+						alert('扣扣号')
+					},
+					cancel(){
+						alert('取消啦...')
+					}
+				}
+			});
+		</script>
+	    
+	    
+		
+		<script src="app.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

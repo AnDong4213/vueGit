@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script src="./vue-2.4.4.js"></script>
+		<style type="text/css">
+			ul,li{list-style: none;}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" ref="hihi">
+			
+			<!--<input type="checkbox" id="checkbox" v-model="checked">
+			<label for="checkbox">{{ checked }}</label>-->
+			
+			<div id='example-3'>
+			  <input type="checkbox" id="jack" value="Jack1" v-model="checkedNames">
+			  <label for="jack">Jack</label>
+			  <input type="checkbox" id="john" value="John2" v-model="checkedNames">
+			  <label for="john">John</label>
+			  <input type="checkbox" id="mike" value="Mike3" v-model="checkedNames">
+			  <label for="mike">Mike</label>
+			  <br>
+			  <span>Checked names: {{ checkedNames }}</span>
+			</div>
+			<p @click="changeText">changeText</p>
+			<input v-model.lazy="msg1" >
+			<i>{{msg1}}</i>
+			
+			<!--<simple-counter></simple-counter>
+			<simple-counter></simple-counter>
+			<simple-counter></simple-counter>-->
+			<hr />
+			<button @click="toshow">点击让子组件显示</button>  
+			<button @click="toshow1">点击让子组件显示1</button>  
+			<button @click="toshow2">点击让子组件显示2</button>  
+			<button @click="toshow3">点击让子组件显示3</button>
+			<keep-alive>
+				<component v-bind:is="which_to_show"></component>
+			</keep-alive>
+            <!--<component v-bind:is="which_to_show"></component>-->
+			
+		</div>
+		
+		<script src="./test330.js"></script>
+	</body>
+</html>

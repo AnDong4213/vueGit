@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script src="./vue-2.4.4.js"></script>
+		<style type="text/css">
+			ul,li{list-style: none;}
+			.hehe{color: palegreen;}
+			.current{color: red;}
+			.jj{color: red;}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" ref="hihi" time="kk">
+			<i>{{message}}</i>
+			<p>{{reverseMessage}}</p>
+			<p>{{hehe()}}</p>
+			<p class="jj">{{now}}</p>
+			<!--<em>{{message.split('').reverse().join('')}}</em>-->
+			<p>{{hehep}}</p>
+			<span v-bind:title="message1">鼠标悬停几秒钟查看此处动态绑定的提示信息</span>
+			<p v-if="seen">现在你看到我了</p>
+			<div class="mine" ref="hehe">
+				<ul>
+					<li>11</li>
+					<li>22</li>
+					<li>33</li>
+				</ul>
+			</div>
+			<button v-on:click="reverseMessage1">逆转消息</button>
+			<input type="text" v-model="message2" />
+			<div>{{message2}}</div>
+			<ol>
+				<todo-item v-for="(item,index) in groceryList01" :class="{'current': currentIndex===index}" :todo="item" :key="item.id" @click="hehe"></todo-item>
+			</ol>
+			<todo-item2></todo-item2>
+			<p v-on:click="changeIndex">{{zrx}}</p>
+			
+			<span v-once>这个将不会改变: {{ msg }}</span>
+			<p>Using mustaches: {{rawHtml}}</p>
+			<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+			
+			<button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+			
+		</div>
+		
+		<script src="./test329.js"></script>
+	</body>
+</html>

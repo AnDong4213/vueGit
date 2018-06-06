@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+	</head>
+	<body>
+		<div id="demo">
+			
+		</div>
+		<script type="x-template" id="temp">
+			<div>
+			  hello,{{abc}}
+			  <i>妙味课堂...</i>
+			</div>
+		</script>
+		<script>
+			let obj = {
+				abc : 'haha',
+			};
+			var vm = new Vue({
+				el : '#demo',
+				data : obj,
+				template : '#temp'
+			})
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

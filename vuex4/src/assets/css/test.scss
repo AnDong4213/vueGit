@@ -1,0 +1,55 @@
+%mt5 {
+  margin-top: 5px;
+}
+%pt5{
+  padding-top: 5px;
+}
+%mt15 {
+  margin-top: 15px;
+}
+%pt15{
+  padding-top: 15px;
+}
+$fs: 2em;
+$baseLineHeight: 2.5 !default;
+
+.clearfix{
+    &:before,&:after {
+        content:"哈哈";
+        display: table;
+      }
+    &:after {
+        clear:both;
+        overflow: hidden;
+      }
+}
+
+// @mixin :声明混合宏的关键词；   border-radius:混合宏的名称；     大括号内：复用的样式代码；
+@mixin border-radius($radius:3px){
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    border: 0px none;
+    padding: 10px;
+}
+
+// 通过 #{} 插值语句可以在选择器或属性名中使用变量：
+$name: foo;
+$attr: border;
+p.#{$name} {
+  #{$attr}-color: blue;
+  #{$attr}-style: dashed;
+  #{$attr}-width: 1px;
+}
+
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {  
+    font: #{$size}/#{$line-height} $family;
+}
+
+
+
+
+
+
+
+
+

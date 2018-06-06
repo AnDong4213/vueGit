@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+		
+	</head>
+	<body>
+		
+		<div id="app">
+			<div style="float: left;">
+				<h2>自定义的下拉框</h2>
+				<custom-select btn="查询" :list="list1"></custom-select>
+			</div>
+			<div style="float:left;">
+				<h2>自定义的下拉框2</h2>
+				<custom-select btn="搜索" :list="list2"></custom-select>
+			</div>
+			
+		</div>
+		<script>
+		/*var obj = {
+					selectShow:false
+				}*/
+			//注册组件
+			Vue.component("custom-select",{
+				data:function(){
+					return {
+						selectShow : false,
+						val : ''
+					};
+				},
+				props:["btn","list"],
+				template:`<section class="warp">
+					<div class="searchIpt clearFix">
+						<div class="clearFix">
+							<input type="text" class="keyWord" :value="val" @click="selectShow = !selectShow" />
+							<input type="button" :value="btn">
+							<span></span>
+						</div>
+					</div>
+					<custom-list 
+						    v-show="selectShow"
+						    :listdata="list"
+						    v-on:receive="changeValue"
+					    ></custom-list>
+				</section>`,
+				methods : {
+					changeValue : function(value){
+						this.val = value;
+						this.selectShow = !this.selectShow;
+					}
+				}
+			});
+			Vue.component('custom-list',{
+				props : ['listdata'],
+				template : `<ul class="list"><li v-for="item in listdata" @click="selectValue(item)">{{item}}</li></ul>`,
+				methods : {
+					selectValue : function(item){
+						this.$emit('receive',item);
+					}
+				}
+			});
+			var vm = new Vue({
+				el:"#app",
+				data : {
+					list1 : ['北京','上海','广州','深圳'],
+					list2 : ['17-08-23','14-08-26','15-08-73','16-09-23']
+				}
+			});
+		</script>
+	    
+	    
+		
+		<script src="app.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./tree.css"/>
+		<script type="text/javascript" src="../vue-2.2.6.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!--<div class="tree-menu-comm tree-menu">
+	            <ul>
+	                <li>
+	                    <div class="tree-title" style="padding-left: 16px;"><span><strong>目录</strong> <i class="ico"></i></span></div>
+	                    <ul>
+	                        <li>
+	                            <div class="tree-title" style="padding-left: 32px;"><span><strong>我的音乐</strong> <i class="ico"></i></span></div>
+	                            <ul>
+	                                <li>
+	                                    <div class="tree-title" style="padding-left: 48px;"><span><strong>周杰伦</strong> <i class="ico"></i></span></div>
+	                                    <ul>
+	                                        <li>
+	                                            <div class="tree-title tree-contro-none" style="padding-left: 64px;"><span><strong>发如雪</strong> <i class="ico"></i></span></div>
+	                                            
+	                                        </li>
+	                                    </ul>
+	                                </li>
+	                                <li>
+	                                    <div class="tree-title" style="padding-left: 48px;"><span><strong>王杰</strong> <i class="ico"></i></span></div>
+	                                    <ul>
+	                                        <li>
+	                                            <div class="tree-title tree-contro-none" style="padding-left: 64px;"><span><strong>一场游戏一场梦</strong> <i class="ico"></i></span></div>
+	                                            
+	                                        </li>
+	                                    </ul>
+	                                </li>
+	                            </ul>
+	                        </li>
+	                        <li>
+	                            <div class="tree-title tree-contro-none" style="padding-left: 32px;"><span><strong>我的照片</strong> <i class="ico"></i></span></div>
+	                            
+	                        </li>
+	                    </ul>
+	                </li>
+	            </ul>
+	        </div>--> 
+	        <m-tree :data="treeList"></m-tree>
+		</div>
+		<script>
+			Vue.component('m-tree-list',{
+				props : {
+					incrementCount : {
+						type : Number,
+						default : 0
+					},
+					data : {
+						type : Array,
+						default : []
+					}
+				},
+				computed : {
+					count(){
+						var c = this.incrementCount;
+						return ++c;
+					},
+					stylePadding(){
+						return {
+							'padding-left' : this.count*16+'px'
+						}
+					}
+				},
+				template : `
+<ul>
+	<li v-for="item of data">
+		<div class="tree-title" :style="[stylePadding]"><span><strong>{{item.title}}</strong> <i class="ico"></i></span></div>
+		<m-tree-list :increment-count="count" v-if="item.children" :data="item.children"></m-tree-list>
+	</li>
+</ul>`,
+				methods : {
+					
+				}
+			});
+			Vue.component('m-tree',{
+				props : {
+					data : {
+						type : Array,
+						default : []
+					}
+				},
+				template : `
+					<div class="tree-menu-comm tree-menu">
+						<m-tree-list :data="data"></m-tree-list>
+					</div>`,
+				methods : {
+					
+				}
+			});
+			var data = [{
+		        title: "目录qq",
+		        children: [
+		        {
+		            title: "我的音乐",
+		            children: [{
+		                title: "周杰伦",
+		                children: [{
+		                    title: "发如雪"
+		                }]
+		            }, {
+		                title: "王杰",
+		                children: [{
+		                    title: "一场游戏一场梦"
+		                }]
+		            }]
+		        }, {
+		            title: "我的照片"
+		        }]
+		    }];
+			var vm = new Vue({
+				el : '#app',
+				data : {
+					treeList : data
+				}
+			});
+		</script>
+	    
+	    
+		
+		<script src="app.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
