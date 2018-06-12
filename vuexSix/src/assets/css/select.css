@@ -47,8 +47,8 @@ input{
 	float: right;
 	width: 58px;
 	height: 36px;
-	border:1px solid #ccc;
-	background: #ccc;
+	border:1px solid #fd635e;
+	background: #fd635e;
 }
 .searchIpt span{
 	position: absolute;

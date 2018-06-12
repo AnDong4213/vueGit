@@ -6,12 +6,12 @@
 				<div class="gallery">
 					<div class="thumbnail">
 						<ul>
-							<li :class="{'on':index==0}" key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_54/quality,Q_90/format,webp'"></li>
+							<li :class="{'on':index==0}" :key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_54/quality,Q_90/format,webp'"></li>
 						</ul>
 					</div>
 					<div class="thumb">
 						<ul>
-							<li :class="{'on':index==0}" key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_440/quality,Q_90/format,webp'"></li>
+							<li :class="{'on':index==0}" :key="index" v-for="img,index in itemsInfo.ali_images"><img :src="img+'?x-oss-process=image/resize,w_440/quality,Q_90/format,webp'"></li>
 						</ul>
 					</div>
 				</div>

@@ -6,17 +6,25 @@
 
 <script>
 export default {
-  props : ['data'],
-  //props: {
-	//click: {
-       // type: Boolean,
-       // default: false
-     // }
- // },
+  //props : ['data'],
+  computed : {
+  	data(){
+  		return this.$store.state.list
+  	}
+  },
   methods : {
   	getTitleHandle(title){
   		this.$emit('changeTitle',title)
+  		//改变vuex中的状态...
+  		//this.$store.commit('changeTitle',{title : title});
+  		//ES6的写法...
+  		this.$store.commit('changeTitle',{title});
   	}
+  },
+  created(){
+  	// 获取数据...
+  	this.$store.dispatch('getListAction');
   }
+  
 }
 </script>

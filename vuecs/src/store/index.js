@@ -24,7 +24,7 @@ let getOtherData = function(time){
 let store = new Vuex.Store({
 	state : {
 		count : 100,
-		answerid : []
+		answerid : ['haha','hehe']
 	},
 	getters : {
 		

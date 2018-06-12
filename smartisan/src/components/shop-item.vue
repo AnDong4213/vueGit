@@ -6,7 +6,7 @@
       <h3>{{item.name_title}}</h3>
       <div class="params-colors">
         <ul class="colors-list">
-          <li key="index" v-for="sku,index in item.sku_info">
+          <li :key="index" v-for="sku,index in item.sku_info">
             <a href="javascript:;" @click="tableData(index)" :data-index="index" :title="sku.spec_json.show_name" :class="{'active':index==itemIndex}"><img :src="'http://img01.smartisanos.cn/'+ sku.spec_json.image +'/20X20.jpg'"></a>
           </li>
         </ul>
