@@ -88,7 +88,12 @@ let router = new Router({
       name: 'Document',
       // component: document
       beforeEnter(to,from,next) {
-        // console.log('beforeEnter');
+		if (from.meta.title == 'about') {
+			console.log(to);
+			console.log(from)
+			console.log('beforeEnter');
+			// window.location.reload()
+		}
         next()
       },
       components: {

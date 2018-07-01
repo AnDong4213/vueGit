@@ -41,8 +41,12 @@ export default {
     }
   },
   beforeRouteEnter(to,from,next) {
-    // console.log('beforeRouteEnter')
+    console.log('beforeRouteEnter')
+	
     next((vm) => {
+	  if (from.meta.title === 'document') {
+		// console.log(vm.$router.go(0))
+	  }
       vm.test = '我改变了哈...'
     })
   },
@@ -51,11 +55,13 @@ export default {
     next()
   },
   beforeRouteLeave(to,from,next) {
+	//console.log(to);
+	//console.log(from)
     console.log('beforeRouteLeave')
     next()
   },
   beforeCreate() {
-    // console.log('beforeCreate');
+    console.log('beforeCreate');
   },
   created() {
     // this.es6()

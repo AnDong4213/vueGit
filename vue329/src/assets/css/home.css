@@ -55,6 +55,6 @@ a {
 }
 
 .activeClass {
-  background: pink;
+  background: #ccc;
   color: #f0f;
 }

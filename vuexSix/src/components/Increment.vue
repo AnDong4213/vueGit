@@ -78,7 +78,7 @@
 			})
 		},
       	/*deHandle(){
-      		//除了this.$store.commit('deIncrement')这种写法，还有一种...
+      		//除了this.$store.commit('deIncrement')这种写法，还有一种...  http://sc.dianpass.com/fpmall/index.html#/index
       		//this.$store.commit('deIncrement');
       		this.$store.commit({
       			type : 'deIncrement',

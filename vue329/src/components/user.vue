@@ -3,6 +3,7 @@
     我是User
     <div class="user-list">
       <!--<router-link style="padding:0 20px" :to="'/user/'+item.tip+'/'+item.id" v-for="(item,index) in userList" :key="index">{{item.userName}}</router-link>-->
+	  
       <router-link style="padding:0 20px" :to="{path:'/user/'+item.tip+'/'+item.id,query: {info:'follow'}}" v-for="(item,index) in userList" :key="index">{{item.userName}}</router-link>
     </div>
     <div class="user-info" v-if="userInfo.userName" style="font-size:20px;">
@@ -40,6 +41,7 @@ export default {
   methods: {
     getData() {
       let id = this.$route.params.userId;
+	  // console.log(id)
       if (id) {
         this.userInfo = this.userList.filter((item) => {
           return item.id == id
@@ -51,6 +53,8 @@ export default {
   },
   watch: {
     '$route' (to,from) {
+	  console.log(to);
+	  console.log(from)
       this.getData()
     }
   }

@@ -7,14 +7,15 @@
         <li><a href="#/about">about</a></li>
         <li><a href="#/document">document</a></li> hash模式下的写法  -->
 
-        <!--<li><a href="/home">home</a></li>
+        <!--  <li><a href="/home">home</a></li>
         <li><a href="/about">about</a></li>
-        <li><a href="/document">document</a></li>-->
+        <li><a href="/document">document</a></li>  -->
 
         <router-link to="/" exact tag="li" event="mouseover">
           <i class="fa fa-home"></i>
           <span>Home</span>
         </router-link>
+		
         <!-- <li><router-link to="/document#abc" event="mouseover">document</router-link></li> -->
         <!-- <li><router-link :to="{name: 'Document'}" event="mouseover">document</router-link></li> -->
 
@@ -77,7 +78,7 @@ export default {
     }
   },
   watch: {
-  	$route(to,from) {
+  	'$route'(to,from) {
   		if (to.meta.index < from.meta.index) {
   			this.names = 'left'
   		} else {
